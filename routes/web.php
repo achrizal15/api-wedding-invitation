@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[CommentController::class,"index"]);
-Route::post('/',[CommentController::class,"store"]);
+Route::get('/',function(){
+    return "HALO";
+});
