@@ -1,7 +1,0 @@
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/jasf7131
-    - /bin/cp -rf * $DEPLOYPATH/api-wedding-invitation
-    - /bin/cp -rf ./public $DEPLOYPATH/public_html/
-    # - /bin/cp ./public/js/*.js $DEPLOYPATH/public_html/js
-    # - /bin/cp ./public/css/*.css $DEPLOYPATH/public_html/css
