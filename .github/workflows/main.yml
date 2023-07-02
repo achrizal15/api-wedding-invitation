@@ -17,6 +17,6 @@ jobs:
         server: ftp.jaserba.store
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /api-wedding-invitation/
+        server-dir: /api-wedding-invitation
         # Q=6f$e7-M793
         # achrizal15@jaserba.store
