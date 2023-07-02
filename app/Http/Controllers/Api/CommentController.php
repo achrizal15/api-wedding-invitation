@@ -13,7 +13,7 @@ class CommentController extends Controller
 {
     public function index ()
     {
-        $resource = CommentResource::collection(Comment::where("parent_id", null)->with("comments")->latest()->get());
+        $resource = CommentResource::collection(Comment::where("parent_id", null)->with("comments")->latest()->paginate(10));
 
         return $resource;
     }
@@ -40,7 +40,7 @@ class CommentController extends Controller
         $data['name']     = $request->nama;
         $data['presence'] = $request->hadir;
         Comment::create($data);
-        return CommentResource::collection([ $data ]);
+        return CommentResource::collection($data);
     }
  
 }
