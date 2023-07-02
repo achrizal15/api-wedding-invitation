@@ -23,8 +23,7 @@ class CommentController extends Controller
             $request->all(),
             [ 
                 "nama"     => "required",
-                "komentar" => "required",
-                "hadir"    => "required|boolean"
+                "komentar" => "required"
             ]
         );
         if ( $validator->fails() )
@@ -38,9 +37,12 @@ class CommentController extends Controller
         }
         $data['detail']   = $request->komentar;
         $data['name']     = $request->nama;
-        $data['presence'] = $request->hadir;
+        $data['presence'] = $request->has('hadir')?$request->hadir:false;
         Comment::create($data);
-        return CommentResource::collection($data);
+        return CommentResource::collection([$data]);
+    }
+    public function show(Comment $comment){
+        return response()->json(['data'=>$comment->load("comments")]);
     }
  
 }

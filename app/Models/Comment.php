@@ -15,9 +15,10 @@ class Comment extends Model
         "presence",
         "parent_id"
     ];
+
     public function comments ()
     {
-        return $this->hasMany(Comment::class, "parent_id", "uuid");
+        return $this->hasMany(Comment::class, "parent_id", "uuid")->with("comments");
     }
     public function parent ()
     {

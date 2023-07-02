@@ -17,3 +17,4 @@ use App\Http\Controllers\Api\CommentController;
 
 Route::get('/comment',[CommentController::class,"index"]);
 Route::post('/comment',[CommentController::class,"store"]);
+Route::get('/comment/{comment:uuid}',[CommentController::class,"show"]);
