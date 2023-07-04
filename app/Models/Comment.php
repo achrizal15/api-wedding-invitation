@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Comment extends Model
 {
@@ -15,7 +16,11 @@ class Comment extends Model
         "presence",
         "parent_id"
     ];
-
+    public function getCreatedAtAttribute($value)
+    {
+        $carbonCreatedAt = Carbon::parse($value);
+        return $carbonCreatedAt->diffForHumans();
+    }
     public function comments ()
     {
         return $this->hasMany(Comment::class, "parent_id", "uuid")->with("comments");
